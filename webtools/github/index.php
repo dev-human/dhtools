@@ -9,7 +9,7 @@ $app->get('/', function () use ($app) {
     return 'Nothing to see here.';
 });
 
-$app->get('/event/push', function () use ($app) {
+$app->post('/event/push', function () use ($app) {
     /**
      * do the update.
      * 1 - cd to /dev-human/dev-human and pull from main repo
@@ -17,7 +17,6 @@ $app->get('/event/push', function () use ($app) {
      */
 
     $local_path = "/www/dev-human/dev-human";
-    //$local_path = "/home/erika/Projects/dev-human";
     $update_log = __DIR__ . '/../../logs/update.log';
 
     shell_exec("cd $local_path && git pull 2>&1");
