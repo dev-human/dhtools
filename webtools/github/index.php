@@ -16,11 +16,11 @@ $app->post('/event/push', function () use ($app) {
      * 2 - run the sculpin command and generate the prod output
      */
 
-    $local_path = "/www/dev-human/dev-human";
+    $local_path = "/var/www/devhuman";
     $update_log = __DIR__ . '/../../logs/update.log';
 
     shell_exec("cd $local_path && git pull 2>&1");
-    shell_exec("cd $local_path && sculpin generate --env=prod 2>&1");
+    shell_exec("cd $local_path && vendor/bin/sculpin generate --env=prod 2>&1");
 
     $fp = fopen($update_log, "a+");
     if ($fp !== false) {
